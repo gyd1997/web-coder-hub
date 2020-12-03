@@ -20,7 +20,10 @@
   "homepage": "https://github.com/gyd1997/web-coder-hub#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "koa": "^2.13.0"
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.0.0",
+    "mysql2": "^2.2.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
