@@ -8,8 +8,16 @@ const errorHandler = (error, ctx) => {
       message = '用户名或密码不能为空'
       break
     case errorTypes.USER_ALREADY_EXISTS:
-      status = 409
+      status = 409 // Confilct
       message = '该用户名已存在'
+      break
+    case errorTypes.USER_DOES_NOT_EXITS:
+      status = 400 // Bad Request
+      message = '不存在该用户'
+      break
+    case errorTypes.PASSWORD_IS_INCORRENT:
+      status = 400 // Bad Request
+      message = '用户名或密码不正确'
       break
     default:
       status = 404
