@@ -19,6 +19,10 @@ const errorHandler = (error, ctx) => {
       status = 400 // Bad Request
       message = '用户名或密码不正确'
       break
+    case errorTypes.UNAUTHORIZATION:
+      status = 401 // Unauthrized
+      message = '登录过期'
+      break
     default:
       status = 404
       message = 'Not Found'
