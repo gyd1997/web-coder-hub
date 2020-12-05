@@ -23,6 +23,10 @@ const errorHandler = (error, ctx) => {
       status = 401 // Unauthrized
       message = '登录过期'
       break
+    case errorTypes.UNPERMISSION:
+      status = 401 // Unauthrized
+      message = '不具备操作权限'
+      break
     default:
       status = 404
       message = 'Not Found'
