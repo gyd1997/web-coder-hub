@@ -29,7 +29,6 @@ class CommentService {
   }
 
   async remove(commentId) {
-    console.log(commentId)
     const statement = `DELETE FROM comment WHERE id = ?;`
     const [result] = await connection.execute(statement, [commentId])
     return result
