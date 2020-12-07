@@ -1,8 +1,11 @@
-const momentService = require('../service/moment.service')
 const {
   create,
   getMomentById,
-  getMomentList
+  getMomentList,
+  update,
+  remove,
+  hasLabel,
+  addLabel
 } = require('../service/moment.service')
 
 class momentController {
@@ -38,14 +41,27 @@ class momentController {
   async update(ctx, next) {
     const { momentId } = ctx.params
     const { content } = ctx.request.body
-    const result = await momentService.update(content, momentId)
+    const result = await update(content, momentId)
     ctx.body = result
   }
 
   async remove(ctx, next) {
     const { momentId } = ctx.params
-    const result = await momentService.remove(momentId)
+    const result = await remove(momentId)
     ctx.body = result
+  }
+
+  async addLabels(ctx, next) {
+    const { labels } = ctx
+    const { momentId } = ctx.params
+
+    for (let label of labels) {
+      const isExists = await hasLabel(momentId, label.id)
+      if (!isExists) {
+        await addLabel(momentId, label.id)
+      }
+    }
+    ctx.body = '给动态添加标签成功'
   }
 }
 
